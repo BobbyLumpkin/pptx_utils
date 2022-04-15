@@ -1,0 +1,14 @@
+## Binary files
+**/__pycache__/
+**/.ipynb_checkpoints/
+
+## Data Files and Notebooks
+*.log
+*.csv
+*.xlsx
+*.pickle
+*.parquet
+*.ipynb
+
+## Miscellaneous
+notebooks/
