@@ -36,7 +36,7 @@ def init_pres(
     return ppt
 
 
-def table_from_df(
+def table_from_d(
     slide,
     df: pd.DataFrame,
     top: float,
@@ -130,5 +130,42 @@ def table_from_df(
             cell.text = str(cell_value)
             paragraph = cell.text_frame.paragraphs[0]
             paragraph.font.size = Pt(font_size)
+
+    return slide
+
+
+def matplotlib_to_pic(
+    slide,
+    figure,
+    left: int,
+    top: int,
+    width: int,
+    height: int
+):
+    """
+    Adds a matplotlib figure to a slide as a picture.
+
+    Parameters 
+    ----------
+    slide: a slide object to add the figure to 
+    figure: a matplotlib figure to be included in 'slide'
+    left: integer distance of the left edge of this shape from the left edge of the slide
+    top: integer distance of the top edge of this shape from the top edge of this slied
+    width: integer distance between left and right extents of shape
+    height: integer distance between top and bottom extents of shape
+
+    Returns
+    ----------
+    slide
+    """
+    image_stream = io.BytesIO()
+    figure.savefig(image_stream)
+    pic = slide.shapes.add_picture(
+        image_file = image_stream,
+        left = Inches(left),
+        top = Inches(top),
+        width = Inches(width),
+        height = Inches(height)
+    )
 
     return slide
