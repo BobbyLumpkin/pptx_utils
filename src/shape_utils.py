@@ -36,7 +36,7 @@ def init_pres(
     return ppt
 
 
-def table_from_d(
+def table_from_df(
     slide,
     df: pd.DataFrame,
     top: float,
